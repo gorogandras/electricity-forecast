@@ -1,4 +1,6 @@
+xgboost
 scipy
+scikit-learn
 pandas
 dvc
 notebook

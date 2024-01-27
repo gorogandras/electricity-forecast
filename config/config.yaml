@@ -7,4 +7,16 @@ data_ingestion:
   source_URL: https://github.com/gorogandras/public-data/raw/main/ver_data.zip
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+  csv_name: ver_data.csv
 
+prepare_base_model:
+  root_dir: artifacts/prepare_base_model
+  base_model_path: artifacts/prepare_base_model/base_model.h5
+  updated_base_model_path: artifacts/prepare_base_model/base_model_updated.h5
+
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.pkl
+  train_dataset_path: artifacts/data_ingestion/train.csv
+  test_dataset_path: artifacts/data_ingestion/test.csv
