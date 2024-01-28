@@ -1,4 +1,5 @@
 xgboost
+mlflow==2.2.2
 scipy
 scikit-learn
 pandas

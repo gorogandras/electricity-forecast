@@ -1,0 +1,12 @@
+COLUMNS:
+  hour: int64
+  dayofweek: int64
+  quarter: int64
+  month: int64
+  year: int64
+  dayofyear: int64
+  minute: int64
+
+
+TARGET_COLUMN:
+  name: power

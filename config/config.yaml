@@ -17,6 +17,12 @@ prepare_base_model:
 
 training:
   root_dir: artifacts/training
-  trained_model_path: artifacts/training/model.pkl
+  trained_model_path: artifacts/training/model.joblib
   train_dataset_path: artifacts/data_ingestion/train.csv
   test_dataset_path: artifacts/data_ingestion/test.csv
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_ingestion/test.csv
+  model_path: artifacts/training/model.joblib
+  metric_file_name: artifacts/model_evaluation/metrics.json
