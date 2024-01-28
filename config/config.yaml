@@ -30,4 +30,5 @@ model_evaluation:
 prediction:
   root_dir: artifacts/prediction
   model_path: artifacts/training/model.joblib
-  
+  prediction_path: artifacts/prediction
+  scatterplot_path: artifacts/prediction/scatterplot.png
