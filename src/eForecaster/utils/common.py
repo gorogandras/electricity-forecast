@@ -126,15 +126,8 @@ def get_size(path: Path) -> str:
 
 
 def create_df_from_datetime(df):
-    df2 = df.copy()
-    df2['hour'] = df.index.hour
-    df2['dayofweek'] = df.index.dayofweek
-    df2['quarter'] = df.index.quarter
-    df2['month'] = df.index.month
-    df2['year'] = df.index.year
-    df2['dayofyear'] = df.index.dayofyear
-    df2['minute'] = df.index.minute
-    print(df2)
+    df.set_index('datetime', inplace=True)
+
 
 #def decodeImage(imgstring, fileName):
 #    imgdata = base64.b64decode(imgstring)
