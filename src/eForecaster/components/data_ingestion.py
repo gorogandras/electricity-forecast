@@ -5,6 +5,7 @@ from eForecaster import logger
 from eForecaster.utils.common import get_size
 from eForecaster.entity.config_entity import DataIngestionConfig
 from pathlib import Path
+import pandas as pd
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
@@ -34,3 +35,28 @@ class DataIngestion:
         os.makedirs(unzip_path, exist_ok=True)
         with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
             zip_ref.extractall(unzip_path)
+    
+    def split_dataset(self):
+        path_to_csv = os.path.join(self.config.unzip_dir, self.config.csv_name)
+        df = pd.read_csv(path_to_csv, sep=';', decimal=',')
+        before_symbol = df['datetime'].str.split('+').str[0]
+        df["datetime"] = pd.to_datetime(before_symbol, format="%Y.%m.%d %H:%M:%S ")
+        
+        df.set_index('datetime', inplace=True)
+
+        df['hour'] = df.index.hour
+        df['dayofweek'] = df.index.dayofweek
+        df['quarter'] = df.index.quarter
+        df['month'] = df.index.month
+        df['year'] = df.index.year
+        df['dayofyear'] = df.index.dayofyear
+        df['minute'] = df.index.minute
+        start_date = '2021-10-04'
+        train=df[(df.index<start_date)]
+        test=df[(df.index>=start_date)]
+
+        unzip_path = self.config.unzip_dir
+        train_csv_name = Path("train.csv")
+        test_csv_name = Path("test.csv")
+        train.to_csv(path_or_buf=os.path.join(unzip_path,train_csv_name))
+        test.to_csv(path_or_buf=os.path.join(unzip_path,test_csv_name))
