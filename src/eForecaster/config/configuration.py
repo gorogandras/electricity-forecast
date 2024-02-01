@@ -1,6 +1,6 @@
 from src.eForecaster.constants import *
 from eForecaster.utils.common import read_yaml, create_directories
-from eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig
+from eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig, ModelEvaluationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -54,3 +54,25 @@ class ConfigurationManager:
             columns = schema.COLUMNS,
         )
         return training_config
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.XGRBoost
+        schema =  self.schema
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            train_data_path=config.train_data_path,
+            model_path = config.model_path,
+            all_params=params,
+            metric_file_name = config.metric_file_name,
+            target_column = schema.TARGET_COLUMN.name,
+            columns = schema.COLUMNS,
+            mlflow_uri="https://dagshub.com/gorogandras/electricity-forecast.mlflow"
+           
+        )
+            
+
+        return model_evaluation_config
