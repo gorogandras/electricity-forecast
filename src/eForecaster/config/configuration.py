@@ -1,6 +1,6 @@
 from src.eForecaster.constants import *
 from eForecaster.utils.common import read_yaml, create_directories
-from eForecaster.entity.config_entity import DataIngestionConfig
+from eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig
 
 class ConfigurationManager:
     def __init__(
@@ -27,4 +27,30 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
-      
+    
+    def get_training_config(self) -> TrainingConfig:
+        training = self.config.training
+        params = self.params.XGRBoost
+        schema =  self.schema
+        
+
+        create_directories([
+            Path(training.root_dir)
+        ])
+
+        training_config = TrainingConfig(
+            root_dir=Path(training.root_dir),
+            trained_model_path=Path(training.trained_model_path),
+            training_data=Path(training.train_dataset_path),
+            testing_data=Path(training.test_dataset_path),
+            params_base_score= params.BASE_SCORE,
+            params_booster=params.BOOSTER,
+            params_n_estimators=params.N_ESTIMATORS,
+            params_early_stopping_rounds=params.EARLY_STOPPING_ROUNDS,
+            params_objective=params.OBJECTIVE,
+            params_max_depth=params.MAX_DEPTH,
+            params_learning_rate= params.LEARNING_RATE,
+            target_column = schema.TARGET_COLUMN.name,
+            columns = schema.COLUMNS,
+        )
+        return training_config

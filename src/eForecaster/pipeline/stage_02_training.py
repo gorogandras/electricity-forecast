@@ -1,25 +1,25 @@
 from eForecaster.config.configuration import ConfigurationManager
-from eForecaster.components.data_ingestion import DataIngestion
+from eForecaster.components.training import Training
 from eForecaster import logger
 
-STAGE_NAME = "Data Ingestion stage"
+STAGE_NAME = "Model training stage"
 
-class DataIngestionTrainingPipeline:
+class ModelTrainingPipeline:
     def __init__(self):
         pass
 
     def main(self):
         config = ConfigurationManager()
-        data_ingestion_config = config.get_data_ingestion_config()
-        data_ingestion = DataIngestion(config=data_ingestion_config)
-        data_ingestion.download_file()
-        data_ingestion.extract_zip_file()
-        data_ingestion.split_dataset()
+        training_config = config.get_training_config()
+        training = Training(config=training_config)
+        df_train, df_test = training.get_dataset()
+        X_train, y_train, X_test, y_test = training.get_features_target(df_train, df_test)
+        training.train(X_train, y_train, X_test, y_test)
 
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionTrainingPipeline()
+        obj = ModelTrainingPipeline()
         obj.main()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
