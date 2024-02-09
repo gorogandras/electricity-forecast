@@ -1,9 +1,9 @@
 import os
 import urllib.request as request
 import zipfile
-from eForecaster import logger
-from eForecaster.utils.common import get_size
-from eForecaster.entity.config_entity import DataIngestionConfig
+from src.eForecaster import logger
+from src.eForecaster.utils.common import get_size
+from src.eForecaster.entity.config_entity import DataIngestionConfig
 from pathlib import Path
 import pandas as pd
 
@@ -52,7 +52,7 @@ class DataIngestion:
         df['dayofyear'] = df.index.dayofyear
         df['minute'] = df.index.minute
         start_date = '2021-10-04'
-        train=df[(df.index<start_date)]
+        train=df[(df.index<start_date)] 
         test=df[(df.index>=start_date)]
 
         unzip_path = self.config.unzip_dir

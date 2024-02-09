@@ -1,6 +1,6 @@
-from eForecaster.config.configuration import ConfigurationManager
-from eForecaster.components.model_evaluation import ModelEvaluation
-from eForecaster import logger
+from src.eForecaster.config.configuration import ConfigurationManager
+from src.eForecaster.components.model_evaluation import ModelEvaluation
+from src.eForecaster import logger
 
 STAGE_NAME = "Model Evaluation stage"
 

@@ -1,6 +1,6 @@
-from eForecaster.config.configuration import ConfigurationManager
-from eForecaster.components.training import Training
-from eForecaster import logger
+from src.eForecaster.config.configuration import ConfigurationManager
+from src.eForecaster.components.training import Training
+from src.eForecaster import logger
 
 STAGE_NAME = "Model training stage"
 

@@ -1,7 +1,7 @@
-from eForecaster import logger
-from eForecaster.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from eForecaster.pipeline.stage_02_training import ModelTrainingPipeline
-from eForecaster.pipeline.stage_03_model_evaluation import ModelEvaluationPipeline
+from src.eForecaster import logger
+from src.eForecaster.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from src.eForecaster.pipeline.stage_02_training import ModelTrainingPipeline
+from src.eForecaster.pipeline.stage_03_model_evaluation import ModelEvaluationPipeline
 
 
 STAGE_NAME = "Data Ingestion stage"
@@ -30,7 +30,7 @@ try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
    data_ingestion = ModelEvaluationPipeline()
    data_ingestion.main()
-   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx===========x")
 except Exception as e:
         logger.exception(e)
-        raise e
+        raise e  
