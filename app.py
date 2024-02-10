@@ -21,21 +21,10 @@ def index():
     if request.method == 'POST':
         try:
             moment_to_pred = [[str(request.form['moment_to_pred'])]]
-            df = pd.DataFrame(moment_to_pred, columns=['datetime'])
-            df['datetime'] = pd.to_datetime(df['datetime'], format="%Y-%m-%d %H:%M:%S")
-            df2 = pd.DataFrame()
-
-            df2['hour'] = df['datetime'].dt.hour
-            df2['dayofweek'] = df['datetime'].dt.dayofweek
-            df2['quarter']  = df['datetime'].dt.quarter
-            df2['month']  = df['datetime'].dt.month
-            df2['year']  = df['datetime'].dt.year
-            df2['dayofyear']  = df['datetime'].dt.dayofyear
-            df2['minute']  = df['datetime'].dt.minute
-            #data = [hour[0], dayofweek[0], quarter[0], month[0], year[0], dayofyear[0], minute[0]]
 
             obj = PredictionPipeline()
-            predict = obj.predict(df2)
+            datetime_df = obj.create_datetime_df(moment_to_pred)
+            predict = obj.predict(datetime_df)
 
             return render_template('results.html', prediction = round(predict[0]))
         except Exception as e:
