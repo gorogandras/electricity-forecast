@@ -37,7 +37,7 @@ def index():
             obj = PredictionPipeline()
             predict = obj.predict(df2)
 
-            return render_template('results.html', prediction = str(predict))
+            return render_template('results.html', prediction = round(predict[0]))
         except Exception as e:
             print('The Exception message is: ', e)
             return 'something is wrong'
