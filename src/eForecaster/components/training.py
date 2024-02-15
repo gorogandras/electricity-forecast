@@ -7,6 +7,7 @@ import joblib
 from src.eForecaster.entity.config_entity import TrainingConfig
 import xgboost as xgb
 
+
 class Training:
     def __init__(self, config: TrainingConfig):
         self.config = config

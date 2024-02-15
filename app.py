@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, send_from_directory
 import os
 import numpy as np
 import pandas as pd
@@ -33,6 +33,9 @@ def index():
     else:
         return render_template('index.html')
 
+@app.route("/artifacts/plotting/scatterplot.png")
+def serve_image():
+    return send_from_directory("artifacts", "plotting/scatterplot.png")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)

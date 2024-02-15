@@ -66,25 +66,4 @@ class ModelEvaluation:
             else:
                 mlflow.sklearn.log_model(model, "model")
     
-    def get_scatterplot(self):
-        test_data = pd.read_csv(self.config.test_data_path)
-        train_data = pd.read_csv(self.config.train_data_path)
-        model = joblib.load(self.config.model_path)
-        test_data = test_data[["datetime", "power"]]
-        train_data = train_data[["datetime", "power"]]
-        start_date = test_data["datetime"].iloc[[0]].values[0]
-
-        test_data["datetime"] = pd.to_datetime(test_data["datetime"], 
-                                               format="%Y-%m-%d %H:%M:%S")
-        train_data["datetime"] = pd.to_datetime(train_data["datetime"], 
-                                               format="%Y-%m-%d %H:%M:%S")
-        #fig, ax = plt.subplots(figsize=(15,5))
-        #train_data.plot(ax=ax, label='Training Set', title="Data train/Test Split")
-        #test_data.plot(ax=ax, label='Test Set')
-        #ax.axvline(start_date, color='black', ls='--')
-        #ax.legend(['Training Set', 'Test set'])
-        test_data['prediction'] = model.predict(test_data['datetime'])
-        ax = train_data[['power']].plot(figsize=(15,5))
-        plt.show()
-        plt.clf() 
-        print(test_data)
+    

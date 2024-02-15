@@ -38,3 +38,12 @@ class ModelEvaluationConfig:
     target_column: str
     columns: str
     mlflow_uri: str
+
+@dataclass(frozen=True)
+class PlotConfig:
+    root_dir: Path
+    model_path: Path
+    test_data_path: Path
+    scatterplot_path: Path
+    target_column: str
+    columns: str

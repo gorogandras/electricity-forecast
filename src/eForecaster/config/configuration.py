@@ -1,6 +1,6 @@
 from src.eForecaster.constants import *
 from src.eForecaster.utils.common import read_yaml, create_directories
-from src.eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig, ModelEvaluationConfig
+from src.eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig, ModelEvaluationConfig, PlotConfig
 
 class ConfigurationManager:
     def __init__(
@@ -74,5 +74,21 @@ class ConfigurationManager:
            
         )
             
-
         return model_evaluation_config
+    
+    def get_plot_config(self) -> PlotConfig:
+        config = self.config.plotting
+
+        schema = self.schema
+        create_directories([
+            Path(config.root_dir)
+        ])
+        plot_config = PlotConfig(
+            root_dir=config.root_dir,
+            model_path = config.model_path,
+            test_data_path = config.test_data_path,
+            scatterplot_path = config.scatterplot_path,
+            target_column = schema.TARGET_COLUMN.name,
+            columns = schema.COLUMNS
+        )
+        return plot_config
