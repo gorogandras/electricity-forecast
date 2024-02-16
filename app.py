@@ -33,6 +33,25 @@ def index():
     else:
         return render_template('index.html')
 
+@app.route('/results_period', methods=['POST', 'GET'])
+def results_period():
+    if request.method == 'GET':
+        try:
+            """moment_to_pred = [[str(request.form['moment_to_pred'])]]
+            obj = PredictionPipeline()
+            datetime_df = obj.create_datetime_df(moment_to_pred)
+            predict = obj.predict(datetime_df)"""
+            
+            return render_template('results_period.html')
+        
+        except Exception as e:
+            print('The Exception message is: ', e)
+            return 'something is wrong'
+    else:
+        return render_template('index.html')
+
+
+
 @app.route("/artifacts/plotting/scatterplot.png")
 def serve_image():
     return send_from_directory("artifacts", "plotting/scatterplot.png")
