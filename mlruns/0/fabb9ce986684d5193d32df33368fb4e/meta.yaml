@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/rociocuatecontzi/Desktop/programming/electricity-forecast/mlruns/0/fabb9ce986684d5193d32df33368fb4e/artifacts
+end_time: 1708776190459
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fabb9ce986684d5193d32df33368fb4e
+run_name: kindly-wren-400
+run_uuid: fabb9ce986684d5193d32df33368fb4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708776186847
+status: 3
+tags: []
+user_id: rociocuatecontzi

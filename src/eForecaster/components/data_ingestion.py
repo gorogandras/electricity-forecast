@@ -5,6 +5,7 @@ from src.eForecaster import logger
 from src.eForecaster.utils.common import get_size
 from src.eForecaster.entity.config_entity import DataIngestionConfig
 from pathlib import Path
+from datetime import date, timedelta
 import pandas as pd
 
 class DataIngestion:
@@ -51,7 +52,10 @@ class DataIngestion:
         df['year'] = df.index.year
         df['dayofyear'] = df.index.dayofyear
         df['minute'] = df.index.minute
-        start_date = '2021-10-04'
+        d = timedelta(days=365)
+        start_date = df.index[-1] - d #One year before the last date in the dataset
+        start_date = start_date.strftime("%Y-%m-%d")
+        #start_date = '2021-10-04'
         train=df[(df.index<start_date)] 
         test=df[(df.index>=start_date)]
 
