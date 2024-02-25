@@ -1,4 +1,4 @@
-import os
+"""import os
 import urllib.request as request
 from zipfile import ZipFile
 import time
@@ -16,5 +16,5 @@ class Plotting:
         self.config = config
     pass
 
-
+""" 
 

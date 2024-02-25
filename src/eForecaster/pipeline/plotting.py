@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from src.eForecaster.config.configuration import ConfigurationManager
-from src.eForecaster.components.plotting import Plotting
 from src.eForecaster.entity.config_entity import PlotConfig
 from src.eForecaster import logger
 from datetime import datetime
@@ -51,23 +50,6 @@ class PlottingPipeline:
         plt.xticks(rotation=45)
         ax.set_xlabel('Date')
         ax.set_ylabel('MW')
-        #g = sns.scatterplot(data=df, x="datetime", y="prediction")
-        #g.set_title("placeholder")
-        #g.xticks 
-
         plt.savefig(Path(self.config.scatterplot_path), bbox_inches='tight')
-        #plt.show()
         plt.clf() 
 
-
-
-    """#def main(self):
-        #config = ConfigurationManager()
-        plot_config = config.get_plot_config()
-        plotting = Plotting(config=plot_config)
-        datetime_df = plotting.create_datetime_df("2023-02-13 10:15:00", "2023-02-15 10:15:00")
-        prediction_df = plotting.create_prediction_df(datetime_df)
-        predicted_df = plotting.get_prediction(prediction_df)
-        plotting.get_scatterplot(predicted_df)
-        #print(datetime_df)
-        #print(predicted_df)"""

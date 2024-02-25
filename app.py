@@ -6,8 +6,6 @@ from src.eForecaster.pipeline.prediction import PredictionPipeline
 from src.eForecaster.pipeline.plotting import PlottingPipeline
 from src.eForecaster.config.configuration import ConfigurationManager
 
-
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])

@@ -55,7 +55,6 @@ class DataIngestion:
         d = timedelta(days=365)
         start_date = df.index[-1] - d #One year before the last date in the dataset
         start_date = start_date.strftime("%Y-%m-%d")
-        #start_date = '2021-10-04'
         train=df[(df.index<start_date)] 
         test=df[(df.index>=start_date)]
 
