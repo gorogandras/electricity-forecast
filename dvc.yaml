@@ -1,0 +1,35 @@
+stages: 
+  data_ingestion:
+    cmd: python src/eForecaster/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/eForecaster/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/data.zip
+
+  training:
+    cmd: python src/eForecaster/pipeline/stage_02_training.py
+    deps: 
+      - src/eForecaster/pipeline/stage_02_training.py
+      - config/config.yaml
+    params: 
+      - BASE_SCORE
+      - BOOSTER
+      - N_ESTIMATORS
+      - EARLY_STOPPING_ROUNDS
+      - OBJECTIVE
+      - MAX_DEPTH
+      - LEARNING_RATE
+
+    outs:
+      - artifacts/training/model.joblib
+
+  model_evaluation: 
+    cmd: python src/eForecaster/pipeline/stage_03_model_evaluation.py
+    deps: 
+      - src/eForecaster/pipeline/stage_03_model_evaluation.py
+      - config/config.yaml
+      - artifacts/training/model.joblib
+
+
+    
