@@ -11,7 +11,6 @@ matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-
 class PlottingPipeline:
     def __init__(self, config: PlotConfig):
         self.config = config
@@ -32,8 +31,7 @@ class PlottingPipeline:
         df['year'] = df.datetime.dt.year
         df['dayofyear'] = df.datetime.dt.dayofyear
         df['minute'] = df.datetime.dt.minute
-        return df
-        
+        return df    
 
     def get_prediction(self, df):
         df_copy = df.copy()
@@ -43,8 +41,7 @@ class PlottingPipeline:
         df_copy['prediction'] = prediction
         return df_copy
     
-
-    def get_scatterplot(self, df):
+    def get_lineplot(self, df):
         ax = sns.lineplot(data=df, x='datetime', y='prediction', marker='o')
         plt.title('Forecast')
         plt.xticks(rotation=45)
@@ -52,4 +49,3 @@ class PlottingPipeline:
         ax.set_ylabel('MW')
         plt.savefig(Path(self.config.scatterplot_path), bbox_inches='tight')
         plt.clf() 
-

@@ -1,0 +1,6 @@
+artifact_location: file:///Users/rociocuatecontzi/Desktop/programming/electricity-forecast/mlruns/270007892185556000
+creation_time: 1709314049585
+experiment_id: '270007892185556000'
+last_update_time: 1709314049585
+lifecycle_stage: active
+name: eforecaster-xgbr

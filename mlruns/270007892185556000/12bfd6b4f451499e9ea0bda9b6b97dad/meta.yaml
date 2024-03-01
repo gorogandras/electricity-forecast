@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/rociocuatecontzi/Desktop/programming/electricity-forecast/mlruns/270007892185556000/12bfd6b4f451499e9ea0bda9b6b97dad/artifacts
+end_time: 1709315231014
+entry_point_name: ''
+experiment_id: '270007892185556000'
+lifecycle_stage: active
+run_id: 12bfd6b4f451499e9ea0bda9b6b97dad
+run_name: nervous-ape-578
+run_uuid: 12bfd6b4f451499e9ea0bda9b6b97dad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709315227693
+status: 3
+tags: []
+user_id: rociocuatecontzi

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/rociocuatecontzi/Desktop/programming/electricity-forecast/mlruns/0/334d049847bc49d1bf4ce456392fbb49/artifacts
+end_time: 1709314696915
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 334d049847bc49d1bf4ce456392fbb49
+run_name: dazzling-swan-418
+run_uuid: 334d049847bc49d1bf4ce456392fbb49
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709314693774
+status: 3
+tags: []
+user_id: rociocuatecontzi

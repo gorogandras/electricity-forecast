@@ -50,7 +50,7 @@ def results_period():
             datetime_df = obj.create_datetime_df(start_moment, end_moment)
             prediction_df = obj.create_prediction_df(datetime_df)
             predicted_df = obj.get_prediction(prediction_df)
-            obj.get_scatterplot(predicted_df)            
+            obj.get_lineplot(predicted_df)            
             
             return render_template('results_period.html')
         

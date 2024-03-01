@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/rociocuatecontzi/Desktop/programming/electricity-forecast/mlruns/270007892185556000/525684dafa354c00beec039e95bb5ccc/artifacts
+end_time: 1709315481530
+entry_point_name: ''
+experiment_id: '270007892185556000'
+lifecycle_stage: active
+run_id: 525684dafa354c00beec039e95bb5ccc
+run_name: burly-gnat-431
+run_uuid: 525684dafa354c00beec039e95bb5ccc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1709315478408
+status: 3
+tags: []
+user_id: rociocuatecontzi

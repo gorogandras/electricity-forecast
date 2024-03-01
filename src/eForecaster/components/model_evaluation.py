@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 from src.eForecaster.entity.config_entity import ModelEvaluationConfig
 from src.eForecaster.utils.common import save_json
 from pathlib import Path
+#from datetime import datetime
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
@@ -31,13 +32,18 @@ class ModelEvaluation:
         model = joblib.load(self.config.model_path)
         test_x = test_data[[item for item in self.config.columns.keys()]]
         test_y = test_data[[self.config.target_column]]
-        
+
+        #experiment_name = "eforecaster-xgbr" ## !!
+        #run_name = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        #mlflow.set_experiment(experiment_name) #experiment_name
         mlflow.set_registry_uri(self.config.mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
-
         with mlflow.start_run():
 
+            #run_name=run_name
+       
             predicted_qualities = model.predict(test_x)
 
             (rmse, mae, r2) = self.eval_metrics(test_y, predicted_qualities)
