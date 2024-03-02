@@ -66,7 +66,7 @@ open up you local host and port
 
 MLFLOW_TRACKING_URI=https://dagshub.com/gorogandras/electricity-forecast.mlflow \
 MLFLOW_TRACKING_USERNAME=gorogandras \
-MLFLOW_TRACKING_PASSWORD=d28d223a6b24642b9af69a8bb4f5c10d96764125 \
+MLFLOW_TRACKING_PASSWORD= "!PASSWORD.TXT! \
 python script.py
 
 Run this to export as env variables:
@@ -77,7 +77,7 @@ export MLFLOW_TRACKING_URI=https://dagshub.com/gorogandras/electricity-forecast.
 
 export MLFLOW_TRACKING_USERNAME=gorogandras 
 
-export MLFLOW_TRACKING_PASSWORD=d28d223a6b24642b9af69a8bb4f5c10d96764125
+export MLFLOW_TRACKING_PASSWORD= PASSWORD.TXT!!!
 
 ```
 
