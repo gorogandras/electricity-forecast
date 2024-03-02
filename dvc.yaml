@@ -29,6 +29,8 @@ stages:
       - src/eForecaster/pipeline/stage_03_model_evaluation.py
       - config/config.yaml
       - artifacts/training/model.joblib
-
+    metrics:
+      - artifacts/model_evaluation/metrics.json:
+          cache: false
 
     

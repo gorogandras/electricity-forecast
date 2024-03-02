@@ -43,9 +43,9 @@ class ModelEvaluation:
 
             #run_name=run_name
         
-            predicted_qualities = model.predict(test_x)
+            predicted_consumption = model.predict(test_x)
 
-            (rmse, mae, r2) = self.eval_metrics(test_y, predicted_qualities)
+            (rmse, mae, r2) = self.eval_metrics(test_y, predicted_consumption)
             
             # Saving metrics as local
             scores = {"rmse": rmse, "mae": mae, "r2": r2}
