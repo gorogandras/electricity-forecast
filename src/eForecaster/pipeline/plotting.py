@@ -26,7 +26,7 @@ class PlottingPipeline:
     def create_prediction_df(self, df):
         df['hour'] = df.datetime.dt.hour
         df['dayofweek'] = df.datetime.dt.dayofweek
-        df['quarter'] = df.datetime.dt.quarter
+        df['quarter'] = df.datetime.dt.quarter 
         df['month'] = df.datetime.dt.month
         df['year'] = df.datetime.dt.year
         df['dayofyear'] = df.datetime.dt.dayofyear
@@ -42,7 +42,13 @@ class PlottingPipeline:
         return df_copy
     
     def get_lineplot(self, df):
-        ax = sns.lineplot(data=df, x='datetime', y='prediction', marker='o')
+        test_data = pd.read_csv(self.config.test_data_path)
+        #train_data = pd.read_csv(self.config.train_data_path)
+        test_data["datetime"] = pd.to_datetime(test_data["datetime"], format="%Y.%m.%d %H:%M:%S ")
+        joined_df = df.merge(test_data, how='left', on='datetime')
+        #print(joined_df)
+        #joined_df['set'] = joined_df['set'].fillna('N/A')
+        ax = sns.lineplot(data=joined_df, x='datetime', y='prediction', marker='o')
         plt.title('Forecast')
         plt.xticks(rotation=45)
         ax.set_xlabel('Date')

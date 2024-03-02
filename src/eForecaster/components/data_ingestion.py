@@ -53,6 +53,8 @@ class DataIngestion:
         start_date = start_date.strftime("%Y-%m-%d")
         train=df[(df.index<start_date)] 
         test=df[(df.index>=start_date)]
+        train["set"] = "train"
+        test["set"] = "test"
 
         unzip_path = self.config.unzip_dir
         train_csv_name = Path("train.csv")

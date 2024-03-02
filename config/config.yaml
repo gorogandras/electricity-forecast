@@ -33,3 +33,4 @@ plotting:
   model_path: artifacts/training/model.joblib
   test_data_path: artifacts/data_ingestion/test.csv
   scatterplot_path: artifacts/plotting/scatterplot.png
+
