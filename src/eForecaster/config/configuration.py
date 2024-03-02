@@ -1,6 +1,6 @@
-from src.eForecaster.constants import *
-from src.eForecaster.utils.common import read_yaml, create_directories
-from src.eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig, ModelEvaluationConfig, PlotConfig
+from eForecaster.constants import *
+from eForecaster.utils.common import read_yaml, create_directories
+from eForecaster.entity.config_entity import DataIngestionConfig, TrainingConfig, ModelEvaluationConfig, PlotConfig
 
 class ConfigurationManager:
     def __init__(

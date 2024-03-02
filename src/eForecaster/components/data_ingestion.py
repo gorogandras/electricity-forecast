@@ -1,9 +1,9 @@
 import os
 import urllib.request as request
 import zipfile
-from src.eForecaster import logger
-from src.eForecaster.utils.common import get_size
-from src.eForecaster.entity.config_entity import DataIngestionConfig
+from eForecaster import logger
+from eForecaster.utils.common import get_size
+from eForecaster.entity.config_entity import DataIngestionConfig
 from pathlib import Path
 from datetime import date, timedelta
 import pandas as pd

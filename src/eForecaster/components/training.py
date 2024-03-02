@@ -4,7 +4,7 @@ from zipfile import ZipFile
 import time
 import pandas as pd
 import joblib
-from src.eForecaster.entity.config_entity import TrainingConfig
+from eForecaster.entity.config_entity import TrainingConfig
 import xgboost as xgb
 
 

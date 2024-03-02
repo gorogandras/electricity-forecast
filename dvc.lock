@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python3 src/eForecaster/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: b874e11c0da72e581bb16934aed7be2d
+      size: 1342
+    - path: src/eForecaster/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 144022b07c8b5227f3c3c86ef19dde37
+      size: 910
+    outs:
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: a13932fdd13b51e3da1cbc28495914b1
+      size: 2593237
+  training:
+    cmd: python3 src/eForecaster/pipeline/stage_02_training.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: b874e11c0da72e581bb16934aed7be2d
+      size: 1342
+    - path: src/eForecaster/pipeline/stage_02_training.py
+      hash: md5
+      md5: 4d261f18e831ac49674fc346b8e1ac5b
+      size: 933
+    params:
+      params.yaml:
+        XGRBoost.BASE_SCORE: 0.5
+        XGRBoost.BOOSTER: gbtree
+        XGRBoost.EARLY_STOPPING_ROUNDS: 50
+        XGRBoost.LEARNING_RATE: 0.015
+        XGRBoost.MAX_DEPTH: 5
+        XGRBoost.N_ESTIMATORS: 500
+        XGRBoost.OBJECTIVE: reg:linear
+    outs:
+    - path: artifacts/training/model.joblib
+      hash: md5
+      md5: 7bf2b234a3eb8b745cb113ea2ac31dc8
+      size: 1413375
+  model_evaluation:
+    cmd: python3 src/eForecaster/pipeline/stage_03_model_evaluation.py
+    deps:
+    - path: artifacts/training/model.joblib
+      hash: md5
+      md5: 7bf2b234a3eb8b745cb113ea2ac31dc8
+      size: 1413375
+    - path: config/config.yaml
+      hash: md5
+      md5: b874e11c0da72e581bb16934aed7be2d
+      size: 1342
+    - path: src/eForecaster/pipeline/stage_03_model_evaluation.py
+      hash: md5
+      md5: 2f04e34f4f033281a16dc94e0769671c
+      size: 862

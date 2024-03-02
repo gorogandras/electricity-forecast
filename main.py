@@ -1,7 +1,7 @@
-from src.eForecaster import logger
-from src.eForecaster.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from src.eForecaster.pipeline.stage_02_training import ModelTrainingPipeline
-from src.eForecaster.pipeline.stage_03_model_evaluation import ModelEvaluationPipeline
+from eForecaster import logger
+from eForecaster.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from eForecaster.pipeline.stage_02_training import ModelTrainingPipeline
+from eForecaster.pipeline.stage_03_model_evaluation import ModelEvaluationPipeline
 
 
 STAGE_NAME = "Data Ingestion stage"

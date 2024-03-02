@@ -8,8 +8,8 @@ import numpy as np
 import joblib
 import seaborn as sns
 from matplotlib import pyplot as plt
-from src.eForecaster.entity.config_entity import ModelEvaluationConfig
-from src.eForecaster.utils.common import save_json
+from eForecaster.entity.config_entity import ModelEvaluationConfig
+from eForecaster.utils.common import save_json
 from pathlib import Path
 from datetime import datetime
 

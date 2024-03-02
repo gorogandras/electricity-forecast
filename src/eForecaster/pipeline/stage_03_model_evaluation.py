@@ -1,6 +1,6 @@
-from src.eForecaster.config.configuration import ConfigurationManager
-from src.eForecaster.components.model_evaluation import ModelEvaluation
-from src.eForecaster import logger
+from eForecaster.config.configuration import ConfigurationManager
+from eForecaster.components.model_evaluation import ModelEvaluation
+from eForecaster import logger
 import os
 
 STAGE_NAME = "Model Evaluation stage"
@@ -12,7 +12,6 @@ class ModelEvaluationPipeline:
     def main(self):
         config = ConfigurationManager()
         model_evaluation_config = config.get_model_evaluation_config()
-
         model_evaluation_config = ModelEvaluation(config=model_evaluation_config)
         model_evaluation_config.log_into_mlflow()
 

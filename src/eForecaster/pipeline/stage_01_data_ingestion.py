@@ -1,6 +1,6 @@
-from src.eForecaster.config.configuration import ConfigurationManager
-from src.eForecaster.components.data_ingestion import DataIngestion
-from src.eForecaster import logger
+from eForecaster.config.configuration import ConfigurationManager
+from eForecaster.components.data_ingestion import DataIngestion
+from eForecaster import logger
 
 STAGE_NAME = "Data Ingestion stage"
 
