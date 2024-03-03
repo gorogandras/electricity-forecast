@@ -26,11 +26,11 @@ prediction:
   root_dir: artifacts/prediction
   model_path: artifacts/training/model.joblib
   prediction_path: artifacts/prediction
-  scatterplot_path: artifacts/prediction/scatterplot.png
 
 plotting: 
   root_dir: artifacts/plotting
   model_path: artifacts/training/model.joblib
   test_data_path: artifacts/data_ingestion/test.csv
-  scatterplot_path: artifacts/plotting/scatterplot.png
+  train_data_path: artifacts/data_ingestion/train.csv
+  lineplot_path: artifacts/plotting/lineplot.png
 

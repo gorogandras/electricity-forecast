@@ -43,15 +43,23 @@ class PlottingPipeline:
     
     def get_lineplot(self, df):
         test_data = pd.read_csv(self.config.test_data_path)
-        #train_data = pd.read_csv(self.config.train_data_path)
-        test_data["datetime"] = pd.to_datetime(test_data["datetime"], format="%Y.%m.%d %H:%M:%S ")
-        joined_df = df.merge(test_data, how='left', on='datetime')
-        #print(joined_df)
-        #joined_df['set'] = joined_df['set'].fillna('N/A')
-        ax = sns.lineplot(data=joined_df, x='datetime', y='prediction', marker='o')
+        train_data = pd.read_csv(self.config.train_data_path)
+        test_data["datetime"] = pd.to_datetime(test_data["datetime"], format="%Y-%m-%d %H:%M:%S")
+        train_data["datetime"] = pd.to_datetime(train_data["datetime"], format="%Y-%m-%d %H:%M:%S")
+        train_test = pd.concat([test_data, train_data])
+        joined_df = df.merge(train_test, how='left', on='datetime')
+        joined_df['set'] = joined_df['set'].fillna('N/A')
+        colors = ["#3287AA", "#46A0D2"]
+        custom_palette = sns.set_palette(sns.color_palette(colors))
+        ax = sns.lineplot(data=joined_df, x='datetime', y='power', marker='o', markersize=4,
+                          hue="set",
+                          palette=custom_palette)
+        ax = sns.lineplot(data=joined_df, x='datetime', y='prediction', 
+                          label='prediction', color="#7dce74", alpha=0.8, marker='o', markersize=4)
         plt.title('Forecast')
         plt.xticks(rotation=45)
         ax.set_xlabel('Date')
         ax.set_ylabel('MW')
-        plt.savefig(Path(self.config.scatterplot_path), bbox_inches='tight')
+        plt.savefig(Path(self.config.lineplot_path), bbox_inches='tight')
+        plt.show()
         plt.clf() 

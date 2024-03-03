@@ -87,7 +87,8 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             model_path = config.model_path,
             test_data_path = config.test_data_path,
-            scatterplot_path = config.scatterplot_path,
+            train_data_path= config.train_data_path,
+            lineplot_path = config.lineplot_path,
             target_column = schema.TARGET_COLUMN.name,
             columns = schema.COLUMNS
         )

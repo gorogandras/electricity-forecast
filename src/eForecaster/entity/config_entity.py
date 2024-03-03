@@ -44,6 +44,7 @@ class PlotConfig:
     root_dir: Path
     model_path: Path
     test_data_path: Path
-    scatterplot_path: Path
+    train_data_path: Path
+    lineplot_path: Path
     target_column: str
     columns: str

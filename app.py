@@ -62,9 +62,9 @@ def results_period():
 
 
 
-@app.route("/artifacts/plotting/scatterplot.png")
+@app.route("/artifacts/plotting/lineplot.png")
 def serve_image():
-    return send_from_directory("artifacts", "plotting/scatterplot.png")
+    return send_from_directory("artifacts", "plotting/lineplot.png")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
